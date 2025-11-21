@@ -1,0 +1,94 @@
+{
+  "period": "Nov 7 - Nov 21, 2024",
+  "periodStart": "2024-11-07",
+  "periodEnd": "2024-11-21",
+  "generatedAt": "2024-11-21T10:00:00Z",
+  "metrics": [
+    {
+      "name": "Revenue",
+      "current": 450000,
+      "previous": 420000,
+      "unit": "$",
+      "trend": "up"
+    },
+    {
+      "name": "Active Users",
+      "current": 12500,
+      "previous": 12200,
+      "unit": "count",
+      "trend": "up"
+    },
+    {
+      "name": "Churn Rate",
+      "current": 2.1,
+      "previous": 2.8,
+      "unit": "%",
+      "trend": "down"
+    },
+    {
+      "name": "Support Tickets",
+      "current": 89,
+      "previous": 145,
+      "unit": "count",
+      "trend": "down"
+    },
+    {
+      "name": "Customer Satisfaction",
+      "current": 4.7,
+      "previous": 4.5,
+      "unit": "rating",
+      "trend": "up"
+    }
+  ],
+  "alerts": [
+    {
+      "type": "warning",
+      "message": "Server response time increased by 15%"
+    },
+    {
+      "type": "info",
+      "message": "Mobile app usage up 45%"
+    },
+    {
+      "type": "info",
+      "message": "New feature adoption at 67%"
+    }
+  ]
+}
+```
+
+9. Click **Commit changes** (green button)
+10. Click **Commit changes** again in the popup
+
+#### Step 1.3: Get the Raw File URL
+
+11. Click on your `dashboard.json` file
+12. Click **Raw** button (top right of file content)
+13. **Copy the URL** from your browser - it should look like:
+```
+https://raw.githubusercontent.com/YOUR-USERNAME/podcast-dashboard-data/main/dashboard.json
+```
+
+14. **Save this URL** - you'll need it for Logic Apps!
+
+---
+
+### **PART 2: Update Logic App (20 min)**
+
+#### Step 2.1: Open Logic App Designer
+
+1. Go to **Azure Portal** → Your Logic App
+2. Click **Logic app designer**
+
+#### Step 2.2: Add HTTP Action (Get Data from GitHub)
+
+3. Click **+ New step** (after your Recurrence trigger)
+4. Search: `HTTP`
+5. Select **HTTP**
+
+#### Configure HTTP Action:
+
+6. **Method**: `GET`
+7. **URI**: Paste your raw GitHub URL from Step 1.3
+```
+   https://raw.githubusercontent.com/YOUR-USERNAME/podcast-dashboard-data/main/dashboard.json
